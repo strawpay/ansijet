@@ -1,25 +1,33 @@
 sudo: required
+
 branches:
   only:
   - master
+
 language: node_js
+
 services:
-- mongodb
-- docker
+  - mongodb
+  - docker
+
 node_js:
-- '0.11'
+  - "0.11"
+
 before_script:
-- sudo pip install ansible
-- npm install -g gulp
-- npm install -g bower
-- npm install
-- bower install
-- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASSWORD" https://strawpay-docker-dockerv2-local.artifactoryonline.com
+  - sudo pip install ansible
+  - npm install -g gulp
+  - npm install -g bower
+  - npm install
+  - bower install
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASSWORD" https://strawpay-docker-dockerv2-local.artifactoryonline.com
+  
 script:
-- npm run ci
+  - npm run ci
+  
 after_success:
-- docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
-- docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
+  - docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
+  - docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
+  
 env:
   global:
   - secure: w+IQKYROSvOJGxygqFS2qLPAKtJriTYkVOm1cUlnkprCs/aw7ho/pxid+On+BDY+k0I/mEsj0jT3Kz9znPGQx7EdT7vLCwFZ41xi0CYKDJMlxj+gkn1c/8msYqG6E5QOsS2nhbJpRG76SuwSBMi6R1tFsWxm7kT1gxGDITaXbtcNz36w88Im1IR5U05frQDbUww8zHcXKjQuEW3RwxD+/mKyaqRWQ0CKAhpLuPnS5jrd+EWLDXmZSw3ObHf43Zqw0wpSkETGUeaxY95STPgbjGuGPq67G6P2OMfilRBOsLJUCtum84Q23KF4xY+yd5YscIrgV+U8RnxaJkThwHSeFZDq8RzUc6rCp2Ts8pRC+F40kVSZOTqkfz5R2EAOHOb+342y7jNDNV/fQF03DXH0E6pzZje2QDAdLD/t0VRlzMz5+7cT5/AbVk+oi4OlbhZOWXDC8BDm5dTWRc7uSX1Da8qvJ+0PtuNaNJ44PGmGF2Drd2jPFkgox/GrAZecvgjbeujHxwWddbBHS3Y4I59FmuExjF04S/2v/ku48RAPtiBOU5iYIu+qfk/w5mmz2p5kjfztUEm8hZ6Rw294/sxmAD9+qdRrOYRhKYbZ2OcRH5WbTMPADATXoSk1oYj1dWO7MQgS2lYQ7iEv0rx8m1kcLL4t11X8qM/IQsdFIrj1kis=
