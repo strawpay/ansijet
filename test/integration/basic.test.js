@@ -145,7 +145,7 @@ test['create trigger'] = {
         expect(form.fields).to.exist;
         expect(form.order).to.eql(['description', 'type']);
 
-        _.keys(form.fields.type.options).should.eql(['drone', 'simple']);
+        _.keys(form.fields.type.options).should.eql(['drone', 'simple', 'version']);
       })
       .nodeify(done);        
   },

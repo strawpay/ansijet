@@ -13,6 +13,9 @@ module.exports = function(config) {
   /** Max no. of jobs to execute in parallel. Should match no. of CPU cores. */
   config.jobsInParallel = 1;
 
+  /** If using the ansible vault, set the path to the vault password file */
+   config.vaultPasswordFile = '';
+
   /**
    * Output timeout (seconds). When running a Playbook job, if the shell 
    * process does not produce any output within this time period then 

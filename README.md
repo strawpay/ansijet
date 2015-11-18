@@ -82,6 +82,9 @@ module.exports = function(config) {
   /** Path to folder containg Ansible playbooks */
   config.playbooks = '/playbooks'
 
+  /** If using the ansible vault, set the path to the vault password file */
+  config.vaultPasswordFile = 'vault-password';
+
   /** Max no. of jobs to execute in parallel. Should match no. of CPU cores. */
   config.jobsInParallel = 1;
 };
@@ -143,6 +146,14 @@ build. It supplies the following Ansible variables:
   * `ci_expected_branch`   <- Git branch to run playbook for, configured by user
   * `ci_build_commit`      <- Git commit id, obtained from incoming request
   * `ci_build_branch`      <- Git branch built, obtained from incoming request
+
+**Trigger: Version**
+
+This trigger supplies the following Ansible variables:
+
+  * `expected_inventory`   <- The inventory file to use instead of hosts, configured by user
+  * `inventory         `   <- The inventory file to use instead of hosts, obtained from incoming request
+  * `version`              <- To be used by the playbook, obtained from incoming request
 
 
 ### Jobs

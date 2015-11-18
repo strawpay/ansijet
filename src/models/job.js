@@ -77,20 +77,29 @@ jobSchema.method('execute', function*() {
 
       yield this.log('Ansible variables: ' + JSON.stringify(buildVariables), { code: true });
 
+      var inventory = 'hosts';
       // build --extra-vars parameter string
       var extraVars = [];
       for (let key in buildVariables) {
-        extraVars.push(key + '=' + buildVariables[key]);
+        if (key === 'inventory') {
+            inventory = buildVariables[key];
+        } else {
+          extraVars.push(key + '=' + buildVariables[key]);
+        }
       }
 
       // build final command
-      var cmd = [ 
+      var cmdArr = [
         app.config.ansiblePlaybookBin,
         '-vv',
-        '-i ' + path.join(app.config.playbooks, 'hosts'),
-        '--extra-vars=' + extraVars.join(','),
-        playbook.path
-      ].join(' ');
+        '-i ' + path.join(app.config.playbooks, inventory)
+      ];
+      if (app.config.vaultPasswordFile) {
+        cmdArr.push('-vault-password-file ' + app.config.vaultPasswordFile);
+      }
+      cmdArr.push('--extra-vars=' + extraVars.join(','))
+      cmdArr.push(playbook.path)
+      var cmd = cmdArr.join(' ');
 
       yield this.log(cmd, { console: true });
 
