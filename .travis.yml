@@ -7,7 +7,7 @@ branches:
 language: node_js
 
 services:
-  - mongodb
+  - mongod
   - docker
 
 node_js:
