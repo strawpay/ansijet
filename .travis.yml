@@ -14,17 +14,17 @@ node_js:
 
 before_script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASSWORD" https://strawpay-docker-dockerv2-local.artifactoryonline.com
-  - echo $VAULT_PASSWORD > .vault-password
+#  - echo $VAULT_PASSWORD > .vault-password
   
 script:
   - docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
   - docker run -d strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet  bash "-c" "service mongod start && npm run ci"
   
-deploy:
-  - docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
+#deploy:
+#  - docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
 
-after_script:
-  - rm -f .vault-password
+#after_script:
+#  - rm -f .vault-password
   
 env:
   global:
