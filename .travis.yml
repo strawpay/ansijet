@@ -24,7 +24,7 @@ script:
 #  - docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
 
 #after_script:
-#  - rm -f .vault-password
+  - rm -f .vault-password
   
 env:
   global:
