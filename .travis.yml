@@ -19,8 +19,6 @@ before_script:
 script:
   - docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
   - docker run -d strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet  bash "-c" "service mongod start && npm run ci"
-  
-deploy:
   - docker push strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet
 
 after_script:
