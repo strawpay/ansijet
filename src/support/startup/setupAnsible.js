@@ -40,9 +40,10 @@ module.exports = function*(app) {
   for (var i = 0; files.length > i; ++i) {
     var file = files[i];
 
-    // assume all .yml files in this folder are playbooks
-    if ('.yml' === path.extname(file).toLowerCase()) {
-      var name = path.basename(file, '.yml');
+    // assume all .yml/.yaml files in this folder are playbooks
+    var ext = path.extname(file).toLowerCase()
+    if ('.yml' === ext || '.yaml' === ext) {
+      var name = path.basename(file, ext);
 
       debug('Playbook found: ' + name);
 
