@@ -15,7 +15,7 @@ node_js:
 before_script:
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USER" -p="$DOCKER_PASSWORD" https://strawpay-docker-dockerv2-local.artifactoryonline.com
   - echo $VAULT_PASSWORD > .vault-password
-  - chmod 600 .vaul=password
+  - chmod 600 .vault-password
   
 script:
   - docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
