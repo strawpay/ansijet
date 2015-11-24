@@ -27,7 +27,7 @@ Version.prototype.ansibleVariables = function() {
     expected_inventory: {
       type: 'config',
       desc: 'The the inventory file relative to /playbooks',
-      value: '$VERSION_INVENTORY'
+      value: '$INVENTORY'
     },
     version: {
       type: 'query',
@@ -35,8 +35,8 @@ Version.prototype.ansibleVariables = function() {
     },
     inventory: {
       type: 'query',
-      desc: 'The the inventory file relative to /playbooks',
-      value: '$VERSION_INVENTORY'
+      desc: 'The the inventory file relative to /playbooks must match expected_inventory',
+      value: '$INVENTORY'
     }
   };
 };
