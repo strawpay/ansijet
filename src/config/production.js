@@ -6,7 +6,7 @@ module.exports = function(config) {
 
 
     /** If using the ansible vault, set the path to the vault password file */
-    config.vaultPasswordFile = '.vault-password';
+    config.vaultPasswordFile = '/root/.vault-password';
 
     /** Max no. of jobs to execute in parallel. Should match no. of CPU cores. */
     config.jobsInParallel = 1;
