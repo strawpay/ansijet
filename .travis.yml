@@ -18,7 +18,8 @@ before_script:
   - chmod 600 .vault-password
   - mkdir .ssh
   - openssl aes-256-cbc -K $encrypted_3d4195f55d98_key -iv $encrypted_3d4195f55d98_iv -in ansijet_rsa.enc -out .ssh/id_rsa -d
-  - chmod -R 700 .ssh
+  - chmod 700 .ssh
+  - chmod 600 .ssh/id_rsa
   
 script:
   - docker build -t strawpay-docker-dockerv2-local.artifactoryonline.com/ansijet .
