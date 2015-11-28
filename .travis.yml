@@ -28,7 +28,7 @@ script:
 
 after_script:
   - rm -f .vault-password
-  - rm -f .ssh
+  - rm -rf .ssh
   
 env:
   global:
