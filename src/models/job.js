@@ -91,7 +91,7 @@ jobSchema.method('execute', function*() {
       // build final command
       var cmdArr = [
         app.config.ansiblePlaybookBin,
-        '-vvvv',
+        '-v',
         '-i ' + path.join(app.config.playbooks, inventory)
       ];
       if (app.config.vaultPasswordFile) {
