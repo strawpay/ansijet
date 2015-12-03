@@ -95,7 +95,7 @@ jobSchema.method('execute', function*() {
         '-i ' + path.join(app.config.playbooks, inventory)
       ];
       if (app.config.vaultPasswordFile) {
-        cmdArr.push('--vault-password-file ' + app.config.vaultPasswordFile);
+        cmdArr.push('--vault-password-file=' + app.config.vaultPasswordFile);
       }
       cmdArr.push('-e "' + extraVars.join(' ') + '"')
       cmdArr.push(playbook.path)
